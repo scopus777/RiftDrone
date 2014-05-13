@@ -1,0 +1,202 @@
+﻿<#@ template language="C#" #>
+using System;
+
+namespace AR.Drone.Client.Configuration
+{
+<#
+	BSC("GeneralSection", "general");
+	ROV("ConfigurationVersion", "num_version_config", "Int32");
+    ROV("HardwareVersion", "num_version_mb", "Int32");
+    ROV("FirmwareVersion", "num_version_soft", "String");
+    ROV("DroneSerial", "drone_serial", "String");
+    ROV("FirmwareBuildDate", "soft_build_date", "String");
+    ROV("Motor1Soft", "motor1_soft", "String");
+    ROV("Motor1Hard", "motor1_hard", "String");
+    ROV("Motor1Supplier", "motor1_supplier", "String");
+    ROV("Motor2Soft", "motor2_soft", "String");
+    ROV("Motor2Hard", "motor2_hard", "String");
+    ROV("Motor2Supplier", "motor2_supplier", "String");
+    ROV("Motor3Soft", "motor3_soft", "String");
+    ROV("Motor3Hard", "motor3_hard", "String");
+    ROV("Motor3Supplier", "motor3_supplier", "String");
+    ROV("Motor4Soft", "motor4_soft", "String");
+    ROV("Motor4Hard", "motor4_hard", "String");
+    ROV("Motor4Supplier", "motor4_supplier", "String");
+    RWV("ARDroneName", "ardrone_name", "String");
+    ROV("FlyingTime", "flying_time", "Int32");
+    RWV("NavdataDemo", "navdata_demo", "Boolean");
+    RWE("NavdataOptions", "navdata_options", "NavdataOptions");
+    RWV("ComWatchdog", "com_watchdog", "Int32");
+    RWV("Video", "video_enable", "Boolean");
+    RWV("Vision", "vision_enable", "Boolean");
+    RWV("BatteryVoltageMin", "vbat_min", "Int32");
+    RWV("LocalTime", "localtime", "Int32");
+    ESC();
+    
+    BSC("ControlSection", "control");
+	ROV("AccsOffset", "accs_offset", "String");
+	ROV("AccsGains", "accs_gains", "String");
+	ROV("GyrosOffset", "gyros_offset", "String");
+	ROV("GyrosGains", "gyros_gains", "String");
+	ROV("Gyros110Offset", "gyros110_offset", "String");
+	ROV("Gyros110Gains", "gyros110_gains", "String");
+	ROV("MagnetoOffset", "magneto_offset", "String");
+	ROV("MagnetoRadius", "magneto_radius", "Single");
+	ROV("GyroOffsetThrX", "gyro_offset_thr_x", "Single");
+	ROV("GyroOffsetThrY", "gyro_offset_thr_y", "Single");
+	ROV("GyroOffsetThrZ", "gyro_offset_thr_z", "Single");
+	ROV("PwmRefGyros", "pwm_ref_gyros", "Int32");
+	ROV("OsctunValue", "osctun_value", "Int32");
+	ROV("OsctunTest", "osctun_test", "Boolean");
+	RWV("ControlLevel", "control_level", "Int32");
+	RWV("EulerAngleMax", "euler_angle_max", "Single");
+	RWV("AltitudeMax", "altitude_max", "Int32");
+	RWV("AltitudeMin", "altitude_min", "Int32");
+	RWV("ControliPhoneTilt", "control_iphone_tilt", "Single");
+	RWV("ControlVzMax", "control_vz_max", "Single");
+	RWV("ControlYaw", "control_yaw", "Single");
+	RWV("Outdoor", "outdoor", "Boolean");
+	RWV("FlightWithoutShell", "flight_without_shell", "Boolean");
+	ROV("AutonomousFlight", "autonomous_flight", "Boolean"); // obsolete
+	RWV("ManualTrim", "manual_trim", "Boolean");
+	RWV("IndoorEulerAngleMax", "indoor_euler_angle_max", "Single");
+	RWV("IndoorControlVzMax", "indoor_control_vz_max", "Single");
+	RWV("IndoorControlYaw", "indoor_control_yaw", "Single");
+	RWV("OutdoorEulerAngleMax", "outdoor_euler_angle_max", "Single");
+	RWV("OutdoorControlVzMax", "outdoor_control_vz_max", "Single");
+	RWV("OutdoorControlYaw", "outdoor_control_yaw", "Single");
+	RWV("FlyingMode", "flying_mode", "Int32");
+	RWV("HoveringRange", "hovering_range", "Int32");
+	RWV("FlightAnimation", "flight_anim", "FlightAnimation");
+    ESC();
+    
+	BSC("NetworkSection", "network");
+	RWV("SsidSinglePlayer", "ssid_single_player", "String");
+	RWV("SsidMultiPlayer", "ssid_multi_player", "String");
+	RWV("WifiMode", "wifi_mode", "Int32");
+	RWV("WifiRate", "wifi_rate", "Int32");
+	RWV("OwnerMac", "owner_mac", "String");
+	ESC();
+
+	BSC("PicSection", "pic");
+	RWV("UltrasoundFreq", "ultrasound_freq", "Int32");
+	RWV("UltrasoundWatchdog", "ultrasound_watchdog", "Int32");
+	ROV("Version", "pic_version", "Int32");
+	ESC();
+
+	BSC("VideoSection", "video");
+	ROV("CamifFps", "camif_fps", "Int32");
+	RWV("CodecFps", "codec_fps", "Int32");
+	ROV("CamifBuffers", "camif_buffers", "Int32");
+	ROV("Trackers", "num_trackers", "Int32");
+	RWE("Codec", "video_codec", "VideoCodecType");
+	RWV("Slices", "video_slices", "Int32");
+	RWV("LiveSocket", "video_live_socket", "Int32");
+	ROV("StorageSpace", "video_storage_space", "Int32");
+	RWV("Bitrate", "bitrate", "Int32");
+	RWV("MaxBitrate", "max_bitrate", "Int32");
+	RWE("BitrateCtrlMode", "bitrate_ctrl_mode", "VideoBitrateControlMode");
+	RWV("BitrateStorage", "bitrate_storage", "Int32");
+	RWE("Channel", "video_channel", "VideoChannelType");
+	RWV("OnUsb", "video_on_usb", "Boolean");
+	RWV("FileIndex", "video_file_index", "Int32");
+	ESC();
+
+	BSC("LedsSection", "leds");
+	RWV("LedAnimation", "leds_anim", "LedAnimation");
+	ESC();
+
+	BSC("DetectSection", "detect");
+	RWV("EnemyColors", "enemy_colors", "Int32");
+	RWV("GroundstripeColors", "groundstripe_colors", "Int32");
+	RWV("EnemyWithoutShell", "enemy_without_shell", "Int32");
+	RWV("Type", "detect_type", "Int32");
+	RWV("DetectionsSelectH", "detections_select_h", "Int32");
+	RWV("DetectionsSelectVHsync", "detections_select_v_hsync", "Int32");
+	RWV("DetectionsSelectV", "detections_select_v", "Int32");
+	ESC();
+
+	BSC("SyslogSection", "syslog");
+	RWV("Output", "output", "Int32");
+	RWV("MaxSize", "max_size", "Int32");
+	RWV("NbFiles", "nb_files", "Int32");
+	ESC();
+
+	BSC("UserboxSection", "userbox");
+	RWV("Command", "userbox_cmd", "UserboxCommand");
+	ESC();
+
+	BSC("GpsSection", "gps");
+	ROV("Latitude", "latitude", "Double");
+	ROV("Longitude", "longitude", "Double");
+	ROV("Altitude", "altitude", "Double");
+	ESC();
+
+	BSC("CustomSection", "custom");
+	RWV("ApplicationId", "application_id", "String");
+	RWV("ApplicationDescription", "application_desc", "String");
+	RWV("ProfileId", "profile_id", "String");
+	RWV("ProfileDescription", "profile_desc", "String");
+	RWV("SessionId", "session_id", "String");
+	RWV("SessionDescription", "session_desc", "String");
+	ESC();
+#>
+}
+<#+
+	private const string Indent = "    ";
+	
+	private void BSC(string className, string sectionName)
+	{
+		this.WriteLine(string.Empty);
+		this.PushIndent(Indent);
+		this.WriteLine("public class " + className + " : SectionBase");
+		this.WriteLine("{");
+		this.PushIndent(Indent);
+		
+		this.WriteLine("public {0}(Settings settings) : base(settings, \"{1}\")", className, sectionName);
+		this.WriteLine("{");
+		this.WriteLine("}");
+	}
+	
+	private void ESC()
+	{
+		this.PopIndent();
+		this.WriteLine("}");
+		this.PopIndent();
+	}
+	
+	private void ROV(string propertyName, string keyName, string typeName)
+	{
+		this.WriteLine(string.Empty);
+		this.WriteLine("public {0} {1}", typeName, propertyName);
+		this.WriteLine("{");
+		this.PushIndent(Indent);
+		this.WriteLine("get {{ return Get{0}(\"{1}\"); }}", typeName, keyName);
+		this.PopIndent();
+		this.WriteLine("}");
+	}
+	
+	private void RWV(string propertyName, string keyName, string typeName)
+	{
+		this.WriteLine(string.Empty);
+		this.WriteLine("public {0} {1}", typeName, propertyName);
+		this.WriteLine("{");
+		this.PushIndent(Indent);
+		this.WriteLine("get {{ return Get{0}(\"{1}\"); }}", typeName, keyName);
+		this.WriteLine("set {{ Set(\"{0}\", value); }}", keyName);
+		this.PopIndent();
+		this.WriteLine("}");
+	}
+	
+	private void RWE(string propertyName, string keyName, string typeName)
+	{
+		this.WriteLine(string.Empty);
+		this.WriteLine("public {0} {1}", typeName, propertyName);
+		this.WriteLine("{");
+		this.PushIndent(Indent);
+		this.WriteLine("get {{ return GetEnum<{0}>(\"{1}\"); }}", typeName, keyName);
+		this.WriteLine("set {{ SetEnum<{0}>(\"{1}\", value); }}", typeName, keyName);
+		this.PopIndent();
+		this.WriteLine("}");
+	}
+#>
