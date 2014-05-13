@@ -6,10 +6,10 @@ Because of legal issues this project does not contain the functionalties for the
 This project is made for Windows and only tested under Windows 7 64-Bit.
 
 ### Requirements:
-[Ar.Drone 2.0](http://ardrone2.parrot.com)
-[Oculus Rift](http://www.oculusvr.com)
-[Xbox 360 Controller](http://www.xbox.com/de-DE/Xbox360/Accessories/Controllers)
-[Unity 3D Pro](https://unity3d.com/) (Used Version: 4.3.4f1)
+* [Ar.Drone 2.0](http://ardrone2.parrot.com)
+* [Oculus Rift](http://www.oculusvr.com)
+* [Xbox 360 Controller](http://www.xbox.com/de-DE/Xbox360/Accessories/Controllers)
+* [Unity 3D Pro](https://unity3d.com/) (Used Version: 4.3.4f1)
 
 ### Used libraries:
 * [Ruslan-B/AR.Drone C# Framework](https://github.com/Ruslan-B/AR.Drone)
@@ -27,18 +27,18 @@ This project is made for Windows and only tested under Windows 7 64-Bit.
 	
 ### Installation:
 This project does not include every Library needed to execute the application. Therefore you have to follow the following instructions.
-1.	Download the [Task Parallel Library for .NET 3.5](http://www.nuget.org/packages/TaskParallelLibrary/1.0.2856) and put “System.Threading.dll” into the folder “Assets\Plugins\x86” 
-2.	Download [XInputDotNet](https://github.com/speps/XInputDotNet) for Unity  and put “XInputDotNetPure.dll” and “XInputInterface.dll” into the folder “Assets\Plugins\x86”
-3.	Put the files in the directory “Assets\Plugins\x86\FFmpeg” into the unity editor directory (e.g C:\Program Files (x86)\Unity\Editor). Otherwise unity is not able to find these secondary libraries. If you compile the application, then those files have also to be placed in the directory where the exe file of the application is situated.  
-4.	(Optional) – Delete the Camera GameObject and follow [these](http://paddytherabbit.com/unity3d-oculus-rift-plugin-setup) instructions to integrate the oculus rift. Place the OVRCameraController gameobject at a suited position (where the head of the pilot would be most likely).
+1. Download the [Task Parallel Library for .NET 3.5](http://www.nuget.org/packages/TaskParallelLibrary/1.0.2856) and put “System.Threading.dll” into the folder “Assets\Plugins\x86” 
+2. Download [XInputDotNet](https://github.com/speps/XInputDotNet) for Unity  and put “XInputDotNetPure.dll” and “XInputInterface.dll” into the folder “Assets\Plugins\x86”
+3. Put the files in the directory “Assets\Plugins\x86\FFmpeg” into the unity editor directory (e.g C:\Program Files (x86)\Unity\Editor). Otherwise unity is not able to find these secondary libraries. If you compile the application, then those files have also to be placed in the directory where the exe file of the application is situated.  
+4. (Optional) – Delete the Camera GameObject and follow [these](http://paddytherabbit.com/unity3d-oculus-rift-plugin-setup) instructions to integrate the oculus rift. Place the OVRCameraController gameobject at a suited position (where the head of the pilot would be most likely).
 
 ### Changes on the AR.Drone C#-Framework
-- StopWatch.Restart() replaced by StopWatch.Reset() and StopWatch.Start() in:
+* StopWatch.Restart() replaced by StopWatch.Reset() and StopWatch.Start() in:
 	- AR.Drone.Client\Command\CommandSender.cs
 	- AR.Drone.Client\Configuration\ConfigurationAcquisition.cs
 	- AR.Drone.Client\Navigation\NavdataAcquisition.cs
 	
-- added AR.Drone.Client\EnumHelper.cs ([source](http://stackoverflow.com/questions/15017151/implementation-of-enum-tryparse-in-net-3-5)) containing TryParse method. Resulting Changes:
+* added AR.Drone.Client\EnumHelper.cs ([source](http://stackoverflow.com/questions/15017151/implementation-of-enum-tryparse-in-net-3-5)) containing TryParse method. Resulting Changes:
 	- replaced Enum.TryParse(parts[0], out type) in AR.Drone.Client\Configuration\FlightAnimation.cs by EnumHelper.TryParseEnum(parts[0], out type)
 	- replaced Enum.TryParse(parts[0], out type) in AR.Drone.Client\Configuration\LedAnimation.cs by EnumHelper.TryParseEnum(parts[0], out type)
 	- replaced Enum.TryParse(parts[0], out type) in AR.Drone.Client\Configuration\UserboxCommand.cs by EnumHelper.TryParseEnum(parts[0], out type)
