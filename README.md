@@ -27,9 +27,10 @@ This project is made for Windows and only tested under Windows 7 64-Bit.
 	
 ### Installation:
 This project does not include every Library needed to execute the application. Therefore you have to follow the following instructions.
+
 1. Download the [Task Parallel Library for .NET 3.5](http://www.nuget.org/packages/TaskParallelLibrary/1.0.2856) and put “System.Threading.dll” into the folder “Assets\Plugins\x86” 
-2. Download [XInputDotNet](https://github.com/speps/XInputDotNet) for Unity  and put “XInputDotNetPure.dll” and “XInputInterface.dll” into the folder “Assets\Plugins\x86”
-3. Put the files in the directory “Assets\Plugins\x86\FFmpeg” into the unity editor directory (e.g C:\Program Files (x86)\Unity\Editor). Otherwise unity is not able to find these secondary libraries. If you compile the application, then those files have also to be placed in the directory where the exe file of the application is situated.  
+2. Download [XInputDotNet](https://github.com/speps/XInputDotNet) for Unity and put “XInputDotNetPure.dll” and “XInputInterface.dll” into the folder “Assets\Plugins\x86”
+3. Put the files situated in the directory “Assets\Plugins\x86\FFmpeg” into the directory of unity editor (e.g C:\Program Files (x86)\Unity\Editor). Otherwise unity is not able to find these secondary libraries. If you compile the application, then those files have also to be placed in the directory where the exe file of the application is situated.  
 4. (Optional) – Delete the Camera GameObject and follow [these](http://paddytherabbit.com/unity3d-oculus-rift-plugin-setup) instructions to integrate the oculus rift. Place the OVRCameraController gameobject at a suited position (where the head of the pilot would be most likely).
 
 ### Changes on the AR.Drone C#-Framework
@@ -44,3 +45,22 @@ This project does not include every Library needed to execute the application. T
 	- replaced Enum.TryParse(parts[0], out type) in AR.Drone.Client\Configuration\UserboxCommand.cs by EnumHelper.TryParseEnum(parts[0], out type)
 	
 - added AR.Drone.Data\EnumExtensions.cs containing HasFlag method ([source](http://www.sambeauvois.be/blog/2011/08/enum-hasflag-method-extension-for-4-0-framework/))
+
+### License
+
+Copyright 2015 Matthias Weise matthiasweise@online.de
+
+GNU Lesser General Public License (LGPL) version 3 or later.  
+http://www.gnu.org/licenses/lgpl.html
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
