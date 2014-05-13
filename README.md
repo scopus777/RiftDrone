@@ -48,7 +48,7 @@ This project does not include every Library needed to execute the application. T
 
 ### License
 
-Copyright 2015 Matthias Weise matthiasweise@online.de
+Copyright 2014 Matthias Weise matthiasweise@online.de
 
 GNU Lesser General Public License (LGPL) version 3 or later.  
 http://www.gnu.org/licenses/lgpl.html
