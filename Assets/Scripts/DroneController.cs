@@ -6,6 +6,7 @@ using AR.Drone.Data;
 using AR.Drone.Data.Navigation;
 using FFmpeg.AutoGen;
 using XInputDotNetPure;
+using NativeWifi;
 
 public class DroneController : MonoBehaviour {
 
@@ -25,6 +26,10 @@ public class DroneController : MonoBehaviour {
 	public Light[] AmbientLights;
 	// Status text
 	public TextMesh StatusText;
+	// Wifi status
+	public TextMesh WifiText;
+	public TextMesh WifiChart;
+	public int maxChartBars = 20;
 
 	// Gamepad variables
 	private bool playerIndexSet = false; 
@@ -50,6 +55,9 @@ public class DroneController : MonoBehaviour {
 	// Width and height if the camera
 	private int width = 640;
 	private int height = 360;
+
+	// wlanclient for signal strength
+	private WlanClient client;
 	
 	// Use this for initialization
 	void Start () {
@@ -77,6 +85,9 @@ public class DroneController : MonoBehaviour {
 
 		// activate main drone camera
 		switchDroneCamera (AR.Drone.Client.Configuration.VideoChannelType.Vertical);
+
+		// determine connection
+		client = new WlanClient();
 	}
 
 	// Update is called once per frame
@@ -132,6 +143,9 @@ public class DroneController : MonoBehaviour {
 			                                navigationData.Battery.Percentage,navigationData.Yaw, navigationData.Pitch,
 			                                navigationData.Roll,navigationData.Altitude);
 		}
+
+		// determine wifi strength 
+		determineWifiStrength ();
 	}
 
 	// Called if the gameobject is destroyed
@@ -241,5 +255,30 @@ public class DroneController : MonoBehaviour {
 		newRotation.x = StickRotationModifier* state.ThumbSticks.Left.Y;
 		newRotation.z =	-StickRotationModifier * state.ThumbSticks.Left.X;
 		Stick.rotation = newRotation;
+	}
+
+	/// <summary>
+	/// Determine the wifi strength.
+	/// </summary>
+	private void determineWifiStrength(){
+		int signalQuality = 0;
+		foreach (WlanClient.WlanInterface wlanIface in client.Interfaces)
+		{
+			try {
+				signalQuality = (int)wlanIface.CurrentConnection.wlanAssociationAttributes.wlanSignalQuality;
+			}
+			catch (System.Exception e ){
+				Debug.Log ("No Wifi Connection");
+			}
+		}
+
+		if (signalQuality != 0) {
+			WifiChart.text = new string('|',signalQuality / (100 / maxChartBars));
+			WifiText.text = "Wifi: " + signalQuality.ToString() + "%";
+		}
+		else {
+			WifiChart.text = "";
+			WifiText.text = "Wifi: 0%";
+		}
 	}
 }
