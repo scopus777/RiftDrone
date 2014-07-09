@@ -5,7 +5,9 @@ This unity project combines the Oculus Rift with the AR.Drone 2.0. A small cockp
 Because of legal issues this project does not contain the functionalties for the oculus rift. But it can be simple integrated manually. Read the chapter Installation für further instructions.
 This project is made for Windows and only tested under Windows 7 64-Bit.
 
-For a small impression you can watch this video: https://www.youtube.com/watch?v=3WmQ1_8ytaM
+For a small impression you can watch these videos: 
+https://www.youtube.com/watch?v=3WmQ1_8ytaM
+https://www.youtube.com/watch?v=b68LKfNzn9c
 
 ### Requirements:
 * [Ar.Drone 2.0](http://ardrone2.parrot.com)
